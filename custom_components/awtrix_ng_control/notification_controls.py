@@ -11,7 +11,7 @@ def _device_info(entry):
 
 class NotificationDuration(NumberEntity):
     _attr_has_entity_name = True
-    _attr_name = "3 · Durata notifica (s)"
+    _attr_translation_key = "notification_duration"
     _attr_icon = "mdi:timer-outline"
     _attr_mode = NumberMode.BOX
     _attr_native_min_value = 1
@@ -34,7 +34,7 @@ class NotificationDuration(NumberEntity):
 
 class NotificationScroll(SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = "3 · Scorrimento notifica"
+    _attr_translation_key = "notification_scroll"
     _attr_icon = "mdi:format-text-wrapping-wrap"
     _attr_options = ["Predefinito", "static", "wrap", "loop", "bounce"]
 
@@ -56,7 +56,7 @@ class NotificationScroll(SelectEntity):
 
 class NotificationSound(TextEntity):
     _attr_has_entity_name = True
-    _attr_name = "3 · Suono notifica"
+    _attr_translation_key = "notification_sound"
     _attr_icon = "mdi:music-note"
     _attr_native_min = 0
     _attr_native_max = 80

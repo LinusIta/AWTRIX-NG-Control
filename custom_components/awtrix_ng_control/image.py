@@ -10,7 +10,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
 
 class AwtrixScreen(ImageEntity):
     _attr_has_entity_name = True
-    _attr_name = 'Schermata'
+    _attr_translation_key = 'screen'
     _attr_content_type = 'image/png'
     def __init__(self,hass,entry,device):
         super().__init__(hass)

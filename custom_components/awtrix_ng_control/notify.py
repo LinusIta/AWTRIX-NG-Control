@@ -15,7 +15,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
 
 class AwtrixNotify(NotifyEntity):
     _attr_has_entity_name = True
-    _attr_name = "Notifications"
+    _attr_translation_key = "notifications"
     _attr_supported_features = NotifyEntityFeature.TITLE
 
     def __init__(self, entry, device):

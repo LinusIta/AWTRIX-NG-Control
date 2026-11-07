@@ -30,7 +30,8 @@
       "description": "Invia un payload JSON AWTRIX NG sul display.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "data": {
           "name": "Payload"
@@ -42,7 +43,8 @@
       "description": "Chiude la notifica attiva.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         }
       }
     },
@@ -51,7 +53,8 @@
       "description": "Rimuove la notifica indicata.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "name": {
           "name": "Nome"
@@ -63,7 +66,8 @@
       "description": "Applica le impostazioni del display.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "data": {
           "name": "Payload"
@@ -75,7 +79,8 @@
       "description": "Crea o aggiorna una app pushed.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "name": {
           "name": "Nome"
@@ -90,7 +95,8 @@
       "description": "Elimina una app pushed.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "name": {
           "name": "Nome"
@@ -102,7 +108,8 @@
       "description": "Mostra una app.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "name": {
           "name": "Nome"
@@ -114,7 +121,8 @@
       "description": "Invia il payload per il comando sound.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "data": {
           "name": "Payload"
@@ -126,7 +134,8 @@
       "description": "Invia il payload RTTTL.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "data": {
           "name": "Payload"
@@ -138,7 +147,8 @@
       "description": "Invia qualsiasi percorso di comando MQTT AWTRIX NG.",
       "fields": {
         "device": {
-          "name": "Dispositivo"
+          "name": "Dispositivo",
+          "description": "Prefisso MQTT, ad esempio tc002, oppure ID entry."
         },
         "command": {
           "name": "Comando"
@@ -333,7 +343,8 @@
           "name": "Dispositivo"
         },
         "order": {
-          "name": "Ordine applicazioni"
+          "name": "Ordine applicazioni",
+          "description": "Lista YAML dei nomi delle app attualmente in rotazione, senza ometterne nessuna."
         }
       }
     },
@@ -393,7 +404,8 @@
           "name": "Dispositivo"
         },
         "data": {
-          "name": "Payload"
+          "name": "Payload",
+          "description": "Oggetto JSON con text oppure layout, durata, suono, hold, stack, wakeup e nome."
         }
       }
     },
@@ -732,10 +744,12 @@
           "name": "Durata (ms)"
         },
         "show_immediately": {
-          "name": "Mostra subito"
+          "name": "Mostra subito",
+          "description": "Mostra subito l'app pubblicata, senza attivare la rotazione."
         },
         "enable_rotation": {
-          "name": "Abilita rotazione app"
+          "name": "Abilita rotazione app",
+          "description": "Attiva la rotazione automatica globale dopo aver creato l'app (non la disattiva se falso)."
         }
       }
     },
@@ -1024,9 +1038,176 @@
           "name": "ID dispositivo"
         }
       }
+    },
+    "say": {
+      "name": "Sintesi vocale (TTS)",
+      "description": "Genera l'audio tramite un motore TTS di Home Assistant e lo riproduce su AWTRIX NG.",
+      "fields": {
+        "device_id": {
+          "name": "Dispositivo AWTRIX",
+          "description": "Seleziona il dispositivo da Home Assistant; in alternativa inserisci il prefisso MQTT."
+        },
+        "device": {
+          "name": "Prefisso MQTT (alternativo)",
+          "description": "Per esempio tc002. Lascia vuoto se hai scelto il dispositivo."
+        },
+        "engine": {
+          "name": "Motore TTS"
+        },
+        "message": {
+          "name": "Messaggio"
+        },
+        "language": {
+          "name": "Lingua (opzionale)"
+        },
+        "cache": {
+          "name": "Usa cache TTS"
+        },
+        "options": {
+          "name": "Opzioni del motore TTS"
+        }
+      }
     }
   },
   "entity": {
+    "number": {
+      "brightness": {
+        "name": "1 · Luminosità"
+      },
+      "app_duration": {
+        "name": "2 · Durata rotazione (s)"
+      },
+      "volume": {
+        "name": "4 · Volume generale"
+      },
+      "radio_volume": {
+        "name": "4 · Volume radio"
+      },
+      "alert_volume": {
+        "name": "4 · Volume avvisi"
+      },
+      "app_volume": {
+        "name": "4 · Volume app"
+      },
+      "notification_duration": {
+        "name": "3 · Durata notifica (s)"
+      }
+    },
+    "switch": {
+      "auto_brightness": {
+        "name": "1 · Luminosità automatica"
+      },
+      "auto_transition": {
+        "name": "2 · Rotazione automatica app"
+      },
+      "display_power": {
+        "name": "1 · Schermo acceso"
+      }
+    },
+    "button": {
+      "dismiss_notification": {
+        "name": "3 · Cancella notifica"
+      },
+      "send_notification": {
+        "name": "3 · Invia ora"
+      },
+      "next_app": {
+        "name": "2 · App successiva"
+      },
+      "previous_app": {
+        "name": "2 · App precedente"
+      },
+      "show_clock": {
+        "name": "1 · Mostra orologio"
+      },
+      "refresh_screen": {
+        "name": "5 · Aggiorna schermata MQTT"
+      },
+      "stop_radio": {
+        "name": "4 · Ferma radio"
+      }
+    },
+    "text": {
+      "notification_text": {
+        "name": "3 · Testo notifica"
+      },
+      "notification_icon": {
+        "name": "3 · Icona notifica"
+      },
+      "notification_color": {
+        "name": "3 · Colore notifica"
+      },
+      "notification_sound": {
+        "name": "3 · Suono notifica"
+      }
+    },
+    "sensor": {
+      "active_app": {
+        "name": "Active App"
+      },
+      "device_info": {
+        "name": "Device Info"
+      },
+      "settings": {
+        "name": "Settings"
+      },
+      "last_error": {
+        "name": "Ultimo errore"
+      },
+      "http_diagnostic": {
+        "name": "Diagnostica HTTP",
+        "state": {
+          "not_configured": "Host HTTP non configurato",
+          "unreachable": "HTTP non raggiungibile",
+          "partial": "HTTP parziale",
+          "connected": "HTTP connesso"
+        }
+      }
+    },
+    "binary_sensor": {
+      "online": {
+        "name": "Online"
+      },
+      "button_left": {
+        "name": "Button Left"
+      },
+      "button_select": {
+        "name": "Button Select"
+      },
+      "button_right": {
+        "name": "Button Right"
+      }
+    },
+    "light": {
+      "indicator": {
+        "name": "5 · Indicatore {index}"
+      }
+    },
+    "image": {
+      "screen": {
+        "name": "Schermata"
+      }
+    },
+    "select": {
+      "radio_station": {
+        "name": "4 · Stazione radio"
+      },
+      "show_app": {
+        "name": "2 · Mostra app"
+      },
+      "notification_scroll": {
+        "name": "3 · Scorrimento notifica"
+      },
+      "clock_face": {
+        "name": "1 · Quadrante orologio"
+      },
+      "weather_overlay": {
+        "name": "1 · Animazione meteo sul display"
+      },
+      "app_transition": {
+        "name": "1 · Transizione app"
+      }
+    },
     "notify": {
       "notifications": {
         "name": "Notifiche"

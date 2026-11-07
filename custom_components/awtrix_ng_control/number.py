@@ -5,6 +5,7 @@ from homeassistant.core import callback
 from homeassistant.components import mqtt
 from .const import DOMAIN, CONF_PREFIX, CONF_NAME
 FIELDS=[("1 · Luminosità", "brightness", 0, 255, 1, "mdi:brightness-6"), ("2 · Durata rotazione (s)", "appDurationMs", 1, 60, 1, "mdi:timer-outline"), ("4 · Volume generale", "volume", 0, 100, 1, "mdi:volume-high"), ("4 · Volume radio", "radioVolume", 0, 100, 1, "mdi:radio"), ("4 · Volume avvisi", "alertVolume", 0, 100, 1, "mdi:bell-ring"), ("4 · Volume app", "appVolume", 0, 100, 1, "mdi:apps")]
+TRANSLATION_KEYS = {"brightness": "brightness", "appDurationMs": "app_duration", "volume": "volume", "radioVolume": "radio_volume", "alertVolume": "alert_volume", "appVolume": "app_volume"}
 async def async_setup_entry(hass, entry, async_add_entities):
     async_add_entities([SettingNumber(hass, entry, hass.data[DOMAIN][entry.entry_id], *f) for f in FIELDS])
     from .notification_controls import NotificationDuration
@@ -14,7 +15,7 @@ class SettingNumber(NumberEntity):
     _attr_mode = NumberMode.SLIDER
     def __init__(self, hass, entry, device, label, key, mini, maxi, step, icon):
         self.hass, self.entry, self.device, self.key = hass, entry, device, key
-        self._attr_name, self._attr_icon = label, icon
+        self._attr_translation_key, self._attr_icon = TRANSLATION_KEYS[key], icon
         self._attr_native_min_value, self._attr_native_max_value, self._attr_native_step = mini, maxi, step
         self._attr_unique_id = f"{entry.entry_id}_brightness_control" if key == "brightness" else f"{entry.entry_id}_{key}"
         self._attr_device_info = {"identifiers": {(DOMAIN, entry.entry_id)}, "name": entry.data[CONF_NAME], "manufacturer": "Ulanzi / AWTRIX NG"}

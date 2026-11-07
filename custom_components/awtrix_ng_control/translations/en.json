@@ -30,7 +30,8 @@
       "description": "AWTRIX NG action: send notification.",
       "fields": {
         "device": {
-          "name": "Device"
+          "name": "Device",
+          "description": "MQTT prefix (for example tc002) or config entry ID."
         },
         "data": {
           "name": "Payload"
@@ -42,7 +43,8 @@
       "description": "AWTRIX NG action: dismiss notification.",
       "fields": {
         "device": {
-          "name": "Device"
+          "name": "Device",
+          "description": "MQTT prefix (for example tc002) or config entry ID."
         }
       }
     },
@@ -51,7 +53,8 @@
       "description": "AWTRIX NG action: dismiss notification by name.",
       "fields": {
         "device": {
-          "name": "Device"
+          "name": "Device",
+          "description": "MQTT prefix (for example tc002) or config entry ID."
         },
         "name": {
           "name": "Name"
@@ -63,7 +66,8 @@
       "description": "AWTRIX NG action: change display settings.",
       "fields": {
         "device": {
-          "name": "Device"
+          "name": "Device",
+          "description": "MQTT prefix (for example tc002) or config entry ID."
         },
         "data": {
           "name": "Payload"
@@ -75,7 +79,8 @@
       "description": "AWTRIX NG action: publish application.",
       "fields": {
         "device": {
-          "name": "Device"
+          "name": "Device",
+          "description": "MQTT prefix (for example tc002) or config entry ID."
         },
         "name": {
           "name": "Name"
@@ -90,7 +95,8 @@
       "description": "AWTRIX NG action: remove application.",
       "fields": {
         "device": {
-          "name": "Device"
+          "name": "Device",
+          "description": "MQTT prefix (for example tc002) or config entry ID."
         },
         "name": {
           "name": "Name"
@@ -102,7 +108,8 @@
       "description": "AWTRIX NG action: show application.",
       "fields": {
         "device": {
-          "name": "Device"
+          "name": "Device",
+          "description": "MQTT prefix (for example tc002) or config entry ID."
         },
         "name": {
           "name": "Name"
@@ -114,7 +121,8 @@
       "description": "AWTRIX NG action: play sound.",
       "fields": {
         "device": {
-          "name": "Device"
+          "name": "Device",
+          "description": "MQTT prefix (for example tc002) or config entry ID."
         },
         "data": {
           "name": "Payload"
@@ -126,7 +134,8 @@
       "description": "AWTRIX NG action: play rtttl melody.",
       "fields": {
         "device": {
-          "name": "Device"
+          "name": "Device",
+          "description": "MQTT prefix (for example tc002) or config entry ID."
         },
         "data": {
           "name": "Payload"
@@ -138,7 +147,8 @@
       "description": "AWTRIX NG action: advanced mqtt command.",
       "fields": {
         "device": {
-          "name": "Device"
+          "name": "Device",
+          "description": "MQTT prefix (for example tc002) or config entry ID."
         },
         "command": {
           "name": "Command"
@@ -333,7 +343,8 @@
           "name": "Device"
         },
         "order": {
-          "name": "Application order"
+          "name": "Application order",
+          "description": "YAML list of the names of every app currently in rotation, without leaving any out."
         }
       }
     },
@@ -393,7 +404,8 @@
           "name": "Device"
         },
         "data": {
-          "name": "Payload"
+          "name": "Payload",
+          "description": "JSON object with text or layout, duration, sound, hold, stack, wakeup and name."
         }
       }
     },
@@ -732,10 +744,12 @@
           "name": "Duration (ms)"
         },
         "show_immediately": {
-          "name": "Show immediately"
+          "name": "Show immediately",
+          "description": "Display the pushed app immediately, without enabling rotation."
         },
         "enable_rotation": {
-          "name": "Enable app rotation"
+          "name": "Enable app rotation",
+          "description": "Enable global automatic rotation after creating the app (does not disable it when false)."
         }
       }
     },
@@ -1024,9 +1038,176 @@
           "name": "Device ID"
         }
       }
+    },
+    "say": {
+      "name": "Text-to-speech (TTS)",
+      "description": "Generate speech with a Home Assistant TTS engine and play it on AWTRIX NG.",
+      "fields": {
+        "device_id": {
+          "name": "AWTRIX device",
+          "description": "Pick the device in Home Assistant, or enter the MQTT prefix instead."
+        },
+        "device": {
+          "name": "MQTT prefix (alternative)",
+          "description": "For example tc002. Leave empty if you picked a device."
+        },
+        "engine": {
+          "name": "TTS engine"
+        },
+        "message": {
+          "name": "Message"
+        },
+        "language": {
+          "name": "Language (optional)"
+        },
+        "cache": {
+          "name": "Use TTS cache"
+        },
+        "options": {
+          "name": "TTS engine options"
+        }
+      }
     }
   },
   "entity": {
+    "number": {
+      "brightness": {
+        "name": "1 · Brightness"
+      },
+      "app_duration": {
+        "name": "2 · Rotation duration (s)"
+      },
+      "volume": {
+        "name": "4 · Master volume"
+      },
+      "radio_volume": {
+        "name": "4 · Radio volume"
+      },
+      "alert_volume": {
+        "name": "4 · Alert volume"
+      },
+      "app_volume": {
+        "name": "4 · App volume"
+      },
+      "notification_duration": {
+        "name": "3 · Notification duration (s)"
+      }
+    },
+    "switch": {
+      "auto_brightness": {
+        "name": "1 · Auto brightness"
+      },
+      "auto_transition": {
+        "name": "2 · Automatic app rotation"
+      },
+      "display_power": {
+        "name": "1 · Screen on"
+      }
+    },
+    "button": {
+      "dismiss_notification": {
+        "name": "3 · Dismiss notification"
+      },
+      "send_notification": {
+        "name": "3 · Send now"
+      },
+      "next_app": {
+        "name": "2 · Next app"
+      },
+      "previous_app": {
+        "name": "2 · Previous app"
+      },
+      "show_clock": {
+        "name": "1 · Show clock"
+      },
+      "refresh_screen": {
+        "name": "5 · Refresh MQTT screenshot"
+      },
+      "stop_radio": {
+        "name": "4 · Stop radio"
+      }
+    },
+    "text": {
+      "notification_text": {
+        "name": "3 · Notification text"
+      },
+      "notification_icon": {
+        "name": "3 · Notification icon"
+      },
+      "notification_color": {
+        "name": "3 · Notification color"
+      },
+      "notification_sound": {
+        "name": "3 · Notification sound"
+      }
+    },
+    "sensor": {
+      "active_app": {
+        "name": "Active App"
+      },
+      "device_info": {
+        "name": "Device Info"
+      },
+      "settings": {
+        "name": "Settings"
+      },
+      "last_error": {
+        "name": "Last error"
+      },
+      "http_diagnostic": {
+        "name": "HTTP diagnostics",
+        "state": {
+          "not_configured": "HTTP host not configured",
+          "unreachable": "HTTP unreachable",
+          "partial": "HTTP partial",
+          "connected": "HTTP connected"
+        }
+      }
+    },
+    "binary_sensor": {
+      "online": {
+        "name": "Online"
+      },
+      "button_left": {
+        "name": "Button Left"
+      },
+      "button_select": {
+        "name": "Button Select"
+      },
+      "button_right": {
+        "name": "Button Right"
+      }
+    },
+    "light": {
+      "indicator": {
+        "name": "5 · Indicator {index}"
+      }
+    },
+    "image": {
+      "screen": {
+        "name": "Screen"
+      }
+    },
+    "select": {
+      "radio_station": {
+        "name": "4 · Radio station"
+      },
+      "show_app": {
+        "name": "2 · Show app"
+      },
+      "notification_scroll": {
+        "name": "3 · Notification scroll"
+      },
+      "clock_face": {
+        "name": "1 · Clock face"
+      },
+      "weather_overlay": {
+        "name": "1 · Weather animation on display"
+      },
+      "app_transition": {
+        "name": "1 · App transition"
+      }
+    },
     "notify": {
       "notifications": {
         "name": "Notifications"

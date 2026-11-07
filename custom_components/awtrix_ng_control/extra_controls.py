@@ -27,7 +27,7 @@ class _HttpEntity:
 
 class DisplayPower(_HttpEntity, SwitchEntity):
     _attr_has_entity_name = True
-    _attr_name = '1 · Schermo acceso'
+    _attr_translation_key = 'display_power'
     _attr_icon = 'mdi:monitor'
 
     def __init__(self, entry, device):
@@ -59,7 +59,7 @@ class DisplayPower(_HttpEntity, SwitchEntity):
 
 class ClockFace(_HttpEntity, SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = '1 · Quadrante orologio'
+    _attr_translation_key = 'clock_face'
     _attr_icon = 'mdi:clock-digital'
 
     def __init__(self, entry, device):
@@ -98,7 +98,7 @@ class ClockFace(_HttpEntity, SelectEntity):
 
 class WeatherOverlay(_HttpEntity, SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = '1 · Animazione meteo sul display'
+    _attr_translation_key = 'weather_overlay'
     _attr_icon = 'mdi:weather-partly-cloudy'
 
     def __init__(self, entry, device):
@@ -138,7 +138,7 @@ class WeatherOverlay(_HttpEntity, SelectEntity):
 
 class AppTransition(_HttpEntity, SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = '1 · Transizione app'
+    _attr_translation_key = 'app_transition'
     _attr_icon = 'mdi:transition'
 
     def __init__(self, entry, device):
