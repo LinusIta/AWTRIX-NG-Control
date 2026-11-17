@@ -27,7 +27,7 @@ class _HttpEntity:
 
 class DisplayPower(_HttpEntity, SwitchEntity):
     _attr_has_entity_name = True
-    _attr_name = '1 · Schermo acceso'
+    _attr_translation_key = 'display_power'
     _attr_icon = 'mdi:monitor'
 
     def __init__(self, entry, device):
@@ -59,7 +59,7 @@ class DisplayPower(_HttpEntity, SwitchEntity):
 
 class ClockFace(_HttpEntity, SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = '1 · Quadrante orologio'
+    _attr_translation_key = 'clock_face'
     _attr_icon = 'mdi:clock-digital'
 
     def __init__(self, entry, device):
@@ -98,7 +98,7 @@ class ClockFace(_HttpEntity, SelectEntity):
 
 class WeatherOverlay(_HttpEntity, SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = '1 · Animazione meteo sul display'
+    _attr_translation_key = 'weather_overlay'
     _attr_icon = 'mdi:weather-partly-cloudy'
 
     def __init__(self, entry, device):
@@ -111,7 +111,7 @@ class WeatherOverlay(_HttpEntity, SelectEntity):
         if not http or not isinstance(http.capabilities, dict): return []
         overlays = http.capabilities.get('overlays', [])
         if not isinstance(overlays, list): return []
-        return ['Nessuno'] + [x for x in overlays if isinstance(x, str)]
+        return ['none'] + [x for x in overlays if isinstance(x, str)]
 
     @property
     def available(self):
@@ -124,13 +124,13 @@ class WeatherOverlay(_HttpEntity, SelectEntity):
         http = self.device.get('http')
         if not http: return None
         active = http.display_info.get('overlay')
-        return active if active in self.options else 'Nessuno'
+        return active if active in self.options else 'none'
 
     async def async_select_option(self, option):
         if option not in self.options: raise HomeAssistantError('Animazione meteo non supportata')
         http = self.device.get('http')
         if not http: raise HomeAssistantError('HTTP not configured')
-        new = None if option == 'Nessuno' else option
+        new = None if option == 'none' else option
         await http.request('PATCH', '/api/v1/display', {'overlay': new})
         http.display_info['overlay'] = new
         self.async_write_ha_state()
@@ -138,7 +138,7 @@ class WeatherOverlay(_HttpEntity, SelectEntity):
 
 class AppTransition(_HttpEntity, SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = '1 · Transizione app'
+    _attr_translation_key = 'app_transition'
     _attr_icon = 'mdi:transition'
 
     def __init__(self, entry, device):
