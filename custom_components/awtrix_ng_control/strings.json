@@ -1196,13 +1196,19 @@
         "name": "2 · Show app"
       },
       "notification_scroll": {
-        "name": "3 · Notification scroll"
+        "name": "3 · Notification scroll",
+        "state": {
+          "Predefinito": "Default"
+        }
       },
       "clock_face": {
         "name": "1 · Clock face"
       },
       "weather_overlay": {
-        "name": "1 · Weather animation on display"
+        "name": "1 · Weather animation on display",
+        "state": {
+          "Nessuno": "None"
+        }
       },
       "app_transition": {
         "name": "1 · App transition"
