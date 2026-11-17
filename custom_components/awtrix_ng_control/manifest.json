@@ -1,7 +1,7 @@
 {
   "domain": "awtrix_ng_control",
   "name": "AWTRIX NG Control",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "documentation": "https://github.com/LinusIta/AWTRIX-NG-Control",
   "issue_tracker": "https://github.com/LinusIta/AWTRIX-NG-Control/issues",
   "config_flow": true,
