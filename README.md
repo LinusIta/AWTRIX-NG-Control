@@ -6,7 +6,7 @@ AWTRIX NG Control is a custom Home Assistant integration designed to provide cen
 
 Developed primarily for the **Ulanzi TC002**, it combines HTTP API and MQTT functionality to manage applications, notifications, visual effects, Berry scripts, audio, multimedia files, backups and device maintenance.
 
-**Version:** 1.2.0  
+**Version:** 1.2.1  
 **Languages:** English and Italian  
 **Installation:** HACS or manual
 
@@ -219,3 +219,13 @@ data:
 ```
 
 Optional fields: `language`, `cache`, and provider-specific `options`. Generated clips must not exceed 2 MiB. TTS entities depend on the user's Home Assistant configuration.
+
+## Version 1.2.1 — Localization update
+
+- Complete English and Italian translations for Home Assistant entity names and 74 actions, including TTS.
+- Translate radio, display, notification and HTTP diagnostic labels.
+- Show **None** / **Default** in the English UI for existing **Nessuno** / **Predefinito** select values, without changing their raw values.
+- Preserve entity unique IDs and existing automation targets.
+- The HTTP diagnostic sensor now exposes canonical raw states (`not_configured`, `unreachable`, `partial`, `connected`); automations matching the previous Italian text need updating.
+
+Thanks to [DaveBKC](https://github.com/DaveBKC) for contributing the broader localization work in PR #1.
