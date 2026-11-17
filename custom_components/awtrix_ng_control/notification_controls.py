@@ -50,7 +50,7 @@ class NotificationScroll(SelectEntity):
 
     async def async_select_option(self, option):
         if option not in self.options:
-            raise ValueError("Modalità di scorrimento non valida")
+            raise ValueError("Invalid notification scroll mode")
         self.device["notification_scroll"] = option
         self.async_write_ha_state()
 
