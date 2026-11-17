@@ -14,8 +14,12 @@ async def async_setup_entry(hass, entry, async_add_entities):
     async_add_entities([ClockFace(entry, hass.data[DOMAIN][entry.entry_id]), WeatherOverlay(entry, hass.data[DOMAIN][entry.entry_id]), AppTransition(entry, hass.data[DOMAIN][entry.entry_id])])
 
 class AwtrixRadioSelect(SelectEntity):
+    @property
+    def _stop_label(self):
+        return self._stop_label if self.hass.config.language.lower().startswith('it') else '— Stop radio —'
+
     _attr_has_entity_name = True
-    _attr_name = '4 · Stazione radio'
+    _attr_translation_key = 'radio_station'
     _attr_icon = 'mdi:radio'
     def __init__(self,hass,entry,device):
         self.hass,self.entry,self.device = hass,entry,device
@@ -28,7 +32,7 @@ class AwtrixRadioSelect(SelectEntity):
     @property
     def options(self):
         http = self.device.get('http')
-        return ['— Arresta radio —'] + (http.station_names if http else [])
+        return [self._stop_label] + (http.station_names if http else [])
     @property
     def current_option(self):
         http = self.device.get('http')
@@ -40,7 +44,7 @@ class AwtrixRadioSelect(SelectEntity):
         return '— Arresta radio —'
     async def async_select_option(self, option):
         if option not in self.options: raise ValueError('Unknown station')
-        path, body = ('audio/stop', {'group':'radio'}) if option == '— Arresta radio —' else ('audio/play', {'station':option})
+        path, body = ('audio/stop', {'group':'radio'}) if option == self._stop_label else ('audio/play', {'station':option})
         http = self.device.get('http')
         if http:
             await http.request('POST', '/api/v1/' + path, body)
@@ -55,7 +59,7 @@ class AwtrixRadioSelect(SelectEntity):
 
 class AwtrixAppSelect(SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = '2 · Mostra app'
+    _attr_translation_key = 'app_select'
     _attr_icon = 'mdi:apps'
 
     def __init__(self, hass, entry, device):
