@@ -1024,12 +1024,109 @@
           "name": "Device ID"
         }
       }
+    },
+    "say": {
+      "name": "Text-to-speech (TTS)",
+      "description": "Generate speech using a Home Assistant TTS engine and play it on AWTRIX NG.",
+      "fields": {
+        "device_id": {
+          "name": "AWTRIX device",
+          "description": "Select the device in Home Assistant."
+        },
+        "device": {
+          "name": "MQTT prefix (alternative)",
+          "description": "For example tc002; leave empty when selecting a device."
+        },
+        "engine": {
+          "name": "TTS engine"
+        },
+        "message": {
+          "name": "Message"
+        },
+        "language": {
+          "name": "Language (optional)"
+        },
+        "cache": {
+          "name": "Use TTS cache"
+        },
+        "options": {
+          "name": "TTS engine options"
+        }
+      }
     }
   },
   "entity": {
     "notify": {
       "notifications": {
         "name": "Notifications"
+      }
+    },
+    "select": {
+      "radio_station": {
+        "name": "4 · Radio station"
+      },
+      "app_select": {
+        "name": "2 · Show application"
+      },
+      "clock_face": {
+        "name": "1 · Clock face"
+      },
+      "weather_overlay": {
+        "name": "1 · Weather animation on display",
+        "state": {
+          "none": "None"
+        }
+      },
+      "app_transition": {
+        "name": "1 · App transition"
+      },
+      "notification_scroll": {
+        "name": "3 · Notification scrolling",
+        "state": {
+          "default": "Default",
+          "static": "Static",
+          "wrap": "Wrap",
+          "loop": "Loop",
+          "bounce": "Bounce"
+        }
+      }
+    },
+    "switch": {
+      "display_power": {
+        "name": "1 · Display power"
+      }
+    },
+    "number": {
+      "notification_duration": {
+        "name": "3 · Notification duration (s)"
+      }
+    },
+    "text": {
+      "notification_sound": {
+        "name": "3 · Notification sound"
+      }
+    },
+    "sensor": {
+      "active_app": {
+        "name": "Active app"
+      },
+      "device_info": {
+        "name": "Device info"
+      },
+      "settings": {
+        "name": "Settings"
+      },
+      "last_error": {
+        "name": "Last error"
+      },
+      "http_diagnostic": {
+        "name": "HTTP diagnostics",
+        "state": {
+          "not_configured": "HTTP host not configured",
+          "unreachable": "HTTP unreachable",
+          "partial": "HTTP partially available",
+          "connected": "HTTP connected"
+        }
       }
     }
   },
