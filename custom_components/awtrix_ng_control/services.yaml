@@ -1,34 +1,24 @@
 notify:
-  name: Mostra notifica
-  description: Invia un payload JSON AWTRIX NG sul display.
   fields:
     device:
-      name: Dispositivo
       description: Prefisso MQTT, ad esempio tc002, oppure ID entry.
       required: true
       selector:
         text: {}
     data:
-      name: Dati notifica
       required: true
       selector:
         object: {}
 dismiss:
-  name: Chiudi notifica
-  description: Chiude la notifica attiva.
   fields:
     device:
-      name: Dispositivo
       description: Prefisso MQTT, ad esempio tc002, oppure ID entry.
       required: true
       selector:
         text: {}
 dismiss_named:
-  name: Chiudi notifica per nome
-  description: Rimuove la notifica indicata.
   fields:
     device:
-      name: Dispositivo
       description: Prefisso MQTT, ad esempio tc002, oppure ID entry.
       required: true
       selector:
@@ -38,11 +28,8 @@ dismiss_named:
       selector:
         text: {}
 settings:
-  name: Impostazioni
-  description: Applica le impostazioni del display.
   fields:
     device:
-      name: Dispositivo
       description: Prefisso MQTT, ad esempio tc002, oppure ID entry.
       required: true
       selector:
@@ -52,11 +39,8 @@ settings:
       selector:
         object: {}
 push_app:
-  name: Pubblica app
-  description: Crea o aggiorna una app pushed.
   fields:
     device:
-      name: Dispositivo
       description: Prefisso MQTT, ad esempio tc002, oppure ID entry.
       required: true
       selector:
@@ -70,11 +54,8 @@ push_app:
       selector:
         object: {}
 remove_app:
-  name: Rimuovi app
-  description: Elimina una app pushed.
   fields:
     device:
-      name: Dispositivo
       description: Prefisso MQTT, ad esempio tc002, oppure ID entry.
       required: true
       selector:
@@ -84,11 +65,8 @@ remove_app:
       selector:
         text: {}
 switch_app:
-  name: Cambia app
-  description: Mostra una app.
   fields:
     device:
-      name: Dispositivo
       description: Prefisso MQTT, ad esempio tc002, oppure ID entry.
       required: true
       selector:
@@ -98,11 +76,8 @@ switch_app:
       selector:
         text: {}
 sound:
-  name: Suono
-  description: Invia il payload per il comando sound.
   fields:
     device:
-      name: Dispositivo
       description: Prefisso MQTT, ad esempio tc002, oppure ID entry.
       required: true
       selector:
@@ -112,11 +87,8 @@ sound:
       selector:
         object: {}
 rtttl:
-  name: Melodia RTTTL
-  description: Invia il payload RTTTL.
   fields:
     device:
-      name: Dispositivo
       description: Prefisso MQTT, ad esempio tc002, oppure ID entry.
       required: true
       selector:
@@ -126,11 +98,8 @@ rtttl:
       selector:
         object: {}
 command:
-  name: Comando MQTT avanzato
-  description: Invia qualsiasi percorso di comando MQTT AWTRIX NG.
   fields:
     device:
-      name: Dispositivo
       description: Prefisso MQTT, ad esempio tc002, oppure ID entry.
       required: true
       selector:
@@ -146,11 +115,8 @@ command:
       selector:
         text: {}
 radio_station:
-  name: Riproduce la stazione selezionata
-  description: Riproduce la stazione selezionata
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
@@ -159,29 +125,20 @@ radio_station:
       selector:
         text: {}
 radio_stop:
-  name: Ferma la radio
-  description: Ferma la radio
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
 radio_refresh:
-  name: Aggiorna le stazioni dal dispositivo
-  description: Aggiorna le stazioni dal dispositivo
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
 radio_add:
-  name: Aggiunge o aggiorna una stazione conservando le altre
-  description: Aggiunge o aggiorna una stazione conservando le altre
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
@@ -194,11 +151,8 @@ radio_add:
       selector:
         text: {}
 radio_remove:
-  name: Rimuove una stazione conservando le altre
-  description: Rimuove una stazione conservando le altre
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
@@ -207,11 +161,8 @@ radio_remove:
       selector:
         text: {}
 play_audio:
-  name: Riproduci oggetto audio
-  description: Riproduci oggetto audio
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
@@ -220,11 +171,8 @@ play_audio:
       selector:
         object: {}
 stop_audio:
-  name: Interrompi gruppo audio
-  description: Interrompi gruppo audio
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
@@ -233,11 +181,8 @@ stop_audio:
       selector:
         object: {}
 http_request:
-  name: Invia richiesta HTTP avanzata al dispositivo
-  description: Invia richiesta HTTP avanzata al dispositivo
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
@@ -259,8 +204,6 @@ http_request:
       selector:
         object: {}
 notify_simple:
-  name: Notifica rapida
-  description: Mostra testo, icona, colore e suono senza scrivere JSON.
   fields:
     device:
       required: true
@@ -271,7 +214,6 @@ notify_simple:
       selector:
         text: {}
     duration:
-      name: Durata (secondi)
       default: 10
       selector:
         number:
@@ -288,8 +230,6 @@ notify_simple:
       selector:
         text: {}
 indicator_set:
-  name: Imposta indicatore
-  description: Imposta uno dei tre LED indicatori con il payload JSON ufficiale.
   fields:
     device:
       required: true
@@ -310,8 +250,6 @@ indicator_set:
       selector:
         object: {}
 indicator_clear:
-  name: Spegni indicatore
-  description: Spegne uno dei tre LED indicatori.
   fields:
     device:
       required: true
@@ -325,258 +263,189 @@ indicator_clear:
           max: 3
           mode: box
 app_refresh:
-  name: Aggiorna applicazioni
-  description: Rilegge le applicazioni e aggiorna il menu senza riavviare Home Assistant.
   fields:
     device:
       required: true
       selector:
         text: {}
 app_set_enabled:
-  name: Abilita o disabilita applicazione
-  description: Modifica lo stato di una sola app senza alterare le altre.
   fields:
     device:
       required: true
       selector:
         text: {}
     name:
-      name: Nome applicazione
       required: true
       selector:
         text: {}
     enabled:
-      name: Abilitata
       required: true
       selector:
         boolean: {}
 app_set_order:
-  name: Ordina applicazioni in rotazione
-  description: Richiede tutte le app attualmente nella rotazione una sola volta; mantiene le app disabilitate.
   fields:
     device:
       required: true
       selector:
         text: {}
     order:
-      name: Elenco ordinato
       description: Lista YAML dei nomi delle app attualmente in rotazione, senza ometterne nessuna.
       required: true
       selector:
         object: {}
 icon_list:
-  name: Elenca icone
-  description: Restituisce l'elenco delle icone installate sul display e lo spazio utilizzato. Usa un'azione con
     risposta.
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
 icon_upload:
-  name: Carica icona
-  description: Carica una GIF/JPEG presente in /config/www/awtrix_icons sul dispositivo.
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
     filename:
-      name: File GIF o JPEG
       required: true
       selector:
         text: {}
 icon_rename:
-  name: Rinomina icona
-  description: Rinomina un'icona esistente senza cambiare l'estensione.
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
     old_name:
-      name: Nome corrente
       required: true
       selector:
         text: {}
     new_name:
-      name: Nuovo nome
       required: true
       selector:
         text: {}
 icon_delete:
-  name: Elimina icona
-  description: Elimina definitivamente un'icona dal display.
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
     name:
-      name: Nome file icona
       required: true
       selector:
         text: {}
 notification_advanced:
-  name: Notifica avanzata (HTTP)
-  description: Invia una notifica completa, anche con layout a regioni e nome, validata dal firmware AWTRIX NG.
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
     data:
-      name: Payload notifica
       description: Oggetto JSON con text oppure layout, durata, suono, hold, stack, wakeup e nome.
       required: true
       selector:
         object: {}
 notification_dismiss_named_http:
-  name: Cancella notifica per nome (HTTP)
-  description: Rimuove una notifica identificata per nome, anche dalla coda.
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
     name:
-      name: Nome notifica
       required: true
       selector:
         text: {}
 script_list:
-  name: Elenca script Berry
-  description: Legge gli script installati e i relativi errori.
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
 script_read:
-  name: Leggi script Berry
-  description: Restituisce il sorgente Berry installato.
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
     name:
-      name: Name
       required: true
       selector:
         text: {}
 script_install:
-  name: Installa script Berry
-  description: Installa un nuovo script Berry da /config/awtrix_ng_scripts, senza sovrascrivere nomi esistenti.
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
     name:
-      name: Name
       required: true
       selector:
         text: {}
     filename:
-      name: Filename
       required: true
       selector:
         text: {}
 script_update:
-  name: Aggiorna script Berry
-  description: Aggiorna uno script solo se il sorgente remoto non è cambiato (scriptUpdates).
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
     name:
-      name: Name
       required: true
       selector:
         text: {}
     filename:
-      name: Filename
       required: true
       selector:
         text: {}
 script_remove:
-  name: Elimina script Berry
-  description: ELIMINA lo script e i suoi dati persistenti; i file audio rimangono.
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
     name:
-      name: Name
       required: true
       selector:
         text: {}
 script_config_get:
-  name: Leggi impostazioni script
-  description: Legge i parametri configurabili Berry.
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
     name:
-      name: Name
       required: true
       selector:
         text: {}
 script_config_set:
-  name: Imposta parametri script
-  description: Modifica alcuni parametri, lasciando invariati gli altri.
   fields:
     device:
-      name: Dispositivo
       required: true
       selector:
         text: {}
     name:
-      name: Name
       required: true
       selector:
         text: {}
     settings:
-      name: Settings
       required: true
       selector:
         object: {}
 audio_status:
-  name: Stato audio
-  description: Legge radio, alert e audio delle app (sola lettura).
   fields:
     device:
       required: true
       selector:
         text: {}
 melody_list:
-  name: Elenco melodie
-  description: Restituisce melodie RTTTL e relative informazioni (sola lettura).
   fields:
     device:
       required: true
       selector:
         text: {}
 melody_save:
-  name: Salva melodia RTTTL
-  description: Crea o sostituisce una melodia presente sul dispositivo.
   fields:
     device:
       required: true
@@ -592,8 +461,6 @@ melody_save:
         text:
           multiline: true
 melody_delete:
-  name: Elimina melodia
-  description: Elimina definitivamente la melodia specificata.
   fields:
     device:
       required: true
@@ -604,16 +471,12 @@ melody_delete:
       selector:
         text: {}
 mp3_list:
-  name: Elenco MP3
-  description: Legge file audio e suoni degli script (sola lettura).
   fields:
     device:
       required: true
       selector:
         text: {}
 mp3_upload:
-  name: Carica MP3
-  description: Carica un MP3 precedentemente salvato in /config/awtrix_ng_audio/.
   fields:
     device:
       required: true
@@ -624,8 +487,6 @@ mp3_upload:
       selector:
         text: {}
 mp3_delete:
-  name: Elimina MP3
-  description: Elimina definitivamente un MP3 dalla cartella /MP3 del dispositivo.
   fields:
     device:
       required: true
@@ -636,8 +497,6 @@ mp3_delete:
       selector:
         text: {}
 mp3_rename:
-  name: Rinomina MP3
-  description: Rinomina un MP3 senza cambiare i suoni propri degli script.
   fields:
     device:
       required: true
@@ -652,8 +511,6 @@ mp3_rename:
       selector:
         text: {}
 audio_play_source:
-  name: Riproduci audio avanzato
-  description: Riproduce una sola sorgente fra file, RTTTL, song, speech e stazione.
   fields:
     device:
       required: true
@@ -678,8 +535,6 @@ audio_play_source:
       selector:
         boolean: {}
 audio_stop_group:
-  name: Ferma gruppo audio
-  description: Ferma solo alert, suoni delle app o radio.
   fields:
     device:
       required: true
@@ -694,8 +549,6 @@ audio_stop_group:
           - app
           - radio
 device_info:
-  name: Device information
-  description: Read firmware version, memory, uptime and current app.
   fields:
     device:
       required: true
@@ -703,8 +556,6 @@ device_info:
       selector:
         text: {}
 system_info:
-  name: System configuration
-  description: Read system settings from the AWTRIX device.
   fields:
     device:
       required: true
@@ -712,8 +563,6 @@ system_info:
       selector:
         text: {}
 device_logs:
-  name: Device logs
-  description: Retrieve logs from the AWTRIX device.
   fields:
     device:
       required: true
@@ -721,8 +570,6 @@ device_logs:
       selector:
         text: {}
 device_capabilities:
-  name: Device capabilities
-  description: Read available effects, transitions, overlays, sensors and audio.
   fields:
     device:
       required: true
@@ -730,8 +577,6 @@ device_capabilities:
       selector:
         text: {}
 moodlight_set:
-  name: Set ambient light
-  description: Set full-screen ambient color, white temperature or brightness.
   fields:
     device:
       required: true
@@ -755,8 +600,6 @@ moodlight_set:
           max: 255
           step: 1
 moodlight_off:
-  name: Turn off ambient light
-  description: Disable ambient light and restore normal application display.
   fields:
     device:
       required: true
@@ -764,8 +607,6 @@ moodlight_off:
       selector:
         text: {}
 visual_capabilities:
-  name: Available visual effects
-  description: Read effects, transitions, overlays and palettes supported by this device.
   fields:
     device:
       required: true
@@ -773,8 +614,6 @@ visual_capabilities:
       selector:
         text: {}
 visual_effect_app:
-  name: Show animated pushed app
-  description: Create or update a pushed app with animated background and optional overlay.
   fields:
     device:
       required: true
@@ -820,18 +659,14 @@ visual_effect_app:
           step: 100
           mode: box
     show_immediately:
-      name: Show immediately
       description: Display the pushed app immediately, without enabling rotation.
       selector:
         boolean: {}
     enable_rotation:
-      name: Enable automatic rotation
       description: Enable global automatic rotation after creating the app (does not disable it when false).
       selector:
         boolean: {}
 visual_overlay_global:
-  name: Set global weather overlay
-  description: Show rain, snow or other weather animation over applications. Use none to turn off.
   fields:
     device:
       required: true
@@ -856,8 +691,6 @@ visual_overlay_global:
       selector:
         text: {}
 visual_transition:
-  name: Set app transition animation
-  description: Select the animation and duration used between applications.
   fields:
     device:
       required: true
@@ -879,8 +712,6 @@ visual_transition:
           step: 100
           mode: box
 app_list_http:
-  name: List applications
-  description: Return all apps with enabled, present and rotation status.
   fields:
     device:
       required: true
@@ -888,8 +719,6 @@ app_list_http:
       selector:
         text: {}
 app_show_http:
-  name: Show application
-  description: Display an application immediately without changing global rotation settings.
   fields:
     device:
       required: true
@@ -902,12 +731,9 @@ app_show_http:
       selector:
         text: {}
     fast:
-      name: Without transition
       selector:
         boolean: {}
 file_list:
-  name: List files / Elenca file
-  description: List asset files and storage usage / Elenca i file e lo spazio utilizzato.
   fields:
     device:
       required: true
@@ -924,8 +750,6 @@ file_list:
           - PALETTES
           - MP3
 file_upload:
-  name: Upload file / Carica file
-  description: Upload from /config/awtrix_ng_files/FOLDER/filename.
   fields:
     device:
       required: true
@@ -947,8 +771,6 @@ file_upload:
       selector:
         text: {}
 file_download:
-  name: Download file / Scarica file
-  description: Save in /config/awtrix_ng_downloads/FOLDER/filename without overwriting.
   fields:
     device:
       required: true
@@ -970,8 +792,6 @@ file_download:
       selector:
         text: {}
 file_delete:
-  name: Delete file / Elimina file
-  description: Permanently delete one asset from AWTRIX / Elimina un file dal dispositivo.
   fields:
     device:
       required: true
@@ -993,8 +813,6 @@ file_delete:
       selector:
         text: {}
 backup_create:
-  name: Create device backup
-  description: Export supported media and optional non-secret settings and script sources to a verified local ZIP.
   fields:
     device:
       required: true
@@ -1027,8 +845,6 @@ backup_create:
       selector:
         boolean: {}
 backup_inspect:
-  name: Inspect backup
-  description: Validate ZIP checksums without changing the device.
   fields:
     name:
       required: true
@@ -1036,8 +852,6 @@ backup_inspect:
       selector:
         text: {}
 backup_restore_files:
-  name: Restore backup files
-  description: Restore only absent media files in one selected folder; never overwrite existing files.
   fields:
     device:
       required: true
@@ -1063,8 +877,6 @@ backup_restore_files:
       selector:
         boolean: {}
 backup_restore_script:
-  name: Restore Berry script
-  description: Install a Berry script from an integration backup only if not present, optionally restoring saved
     options. No overwrites.
   fields:
     device:
@@ -1087,8 +899,6 @@ backup_restore_script:
       selector:
         boolean: {}
 backup_restore_settings:
-  name: Restore safe display settings
-  description: Restore approved display settings only. Excludes network, passwords, MQTT and system settings.
   fields:
     device:
       required: true
@@ -1103,34 +913,25 @@ backup_restore_settings:
       selector:
         boolean: {}
 device_health:
-  name: Device health / Diagnostica dispositivo
-  description: Read device state, display and network statistics without changing any setting. / Legge stato e diagnostica
     senza modifiche.
   fields:
     device:
-      name: Device / Dispositivo
       required: true
       example: tc002
       selector:
         text: {}
 device_reboot:
-  name: Reboot device / Riavvia dispositivo
-  description: Restart AWTRIX NG; explicit confirmation is required. / Riavvia AWTRIX NG con conferma obbligatoria.
   fields:
     device:
-      name: Device / Dispositivo
       required: true
       example: tc002
       selector:
         text: {}
     confirm:
-      name: Confirm / Conferma
       required: true
       selector:
         boolean: {}
 notify_device:
-  name: Send advanced notification to AWTRIX device
-  description: Select the AWTRIX device using the standard Home Assistant target picker. Set duration, icon, color
     and sound; legacy data.device_id is still supported.
   fields:
     message:
@@ -1141,7 +942,6 @@ notify_device:
       selector:
         text: {}
     duration:
-      description: Duration in seconds (1-600).
       selector:
         number:
           min: 1
@@ -1151,7 +951,6 @@ notify_device:
       selector:
         text: {}
     color:
-      description: Text color as hex, for example '#FFFF00'.
       selector:
         text: {}
     sound:
@@ -1167,15 +966,12 @@ notify_device:
       selector:
         boolean: {}
     data:
-      description: Optional AWTRIX payload object; explicit fields override the same options.
       selector:
         object: {}
   target:
     device:
       integration: awtrix_ng_control
 show_app_device:
-  name: Show application on device
-  description: Show an AWTRIX app using a Home Assistant device ID.
   fields:
     device_id:
       required: true
@@ -1187,8 +983,6 @@ show_app_device:
       selector:
         text: {}
 dismiss_device:
-  name: Dismiss notification on device
-  description: Dismiss the current notification using a Home Assistant device ID.
   fields:
     device_id:
       required: true
@@ -1199,43 +993,32 @@ dismiss_device:
 # Replace only the existing `say:` section in services.yaml with this block.
 # No top-level `target:`: it would force Home Assistant to require a target.
 say:
-  name: Sintesi vocale (TTS)
-  description: Genera l'audio tramite un motore TTS di Home Assistant e lo riproduce su AWTRIX NG.
   fields:
     device_id:
-      name: Dispositivo AWTRIX
-      description: Seleziona il dispositivo da Home Assistant; in alternativa inserisci il prefisso MQTT.
       selector:
         device:
           integration: awtrix_ng_control
     device:
-      name: Prefisso MQTT (alternativo)
-      description: Per esempio tc002. Lascia vuoto se hai scelto il dispositivo.
       example: tc002
       selector:
         text: {}
     engine:
-      name: Motore TTS
       required: true
       selector:
         entity:
           domain: tts
     message:
-      name: Messaggio
       required: true
       selector:
         text:
           multiline: true
     language:
-      name: Lingua (opzionale)
       selector:
         text: {}
     cache:
-      name: Usa cache TTS
       default: true
       selector:
         boolean: {}
     options:
-      name: Opzioni del motore TTS
       selector:
         object: {}
