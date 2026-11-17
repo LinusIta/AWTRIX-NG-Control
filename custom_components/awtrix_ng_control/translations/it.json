@@ -1196,13 +1196,19 @@
         "name": "2 · Mostra app"
       },
       "notification_scroll": {
-        "name": "3 · Scorrimento notifica"
+        "name": "3 · Scorrimento notifica",
+        "state": {
+          "Predefinito": "Predefinito"
+        }
       },
       "clock_face": {
         "name": "1 · Quadrante orologio"
       },
       "weather_overlay": {
-        "name": "1 · Animazione meteo sul display"
+        "name": "1 · Animazione meteo sul display",
+        "state": {
+          "Nessuno": "Nessuno"
+        }
       },
       "app_transition": {
         "name": "1 · Transizione app"
