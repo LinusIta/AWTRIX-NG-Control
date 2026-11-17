@@ -15,6 +15,7 @@ BUTTONS = [
     ("4 · Ferma radio", "audio/stop", '{"group":"radio"}', "mdi:radio-off"),
 
 ]
+TRANSLATION_KEYS = {"notify/dismiss": "dismiss_notification", "send_saved_notification": "send_notification", "apps/next": "next_app", "apps/previous": "previous_app", "apps/switch": "show_clock", "screen/get": "refresh_screen", "audio/stop": "stop_radio"}
 async def async_setup_entry(hass, entry, async_add_entities):
     async_add_entities([AwtrixButton(hass, entry, hass.data[DOMAIN][entry.entry_id], *spec) for spec in BUTTONS])
 class AwtrixButton(ButtonEntity):
@@ -22,7 +23,7 @@ class AwtrixButton(ButtonEntity):
     def __init__(self, hass, entry, device, name, command, payload, icon):
         self.hass, self.entry, self.device = hass, entry, device
         self.command, self.payload = command, payload
-        self._attr_name, self._attr_icon = name, icon
+        self._attr_translation_key, self._attr_icon = TRANSLATION_KEYS[command], icon
         self._attr_unique_id = f"{entry.entry_id}_button_{command.replace('/', '_')}"
         self._attr_device_info = {"identifiers": {(DOMAIN, entry.entry_id)}, "name": entry.data[CONF_NAME], "manufacturer": "Ulanzi / AWTRIX NG"}
     @property

@@ -27,7 +27,7 @@ class _HttpEntity:
 
 class DisplayPower(_HttpEntity, SwitchEntity):
     _attr_has_entity_name = True
-    _attr_name = '1 · Schermo acceso'
+    _attr_translation_key = 'display_power'
     _attr_icon = 'mdi:monitor'
 
     def __init__(self, entry, device):
@@ -59,7 +59,7 @@ class DisplayPower(_HttpEntity, SwitchEntity):
 
 class ClockFace(_HttpEntity, SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = '1 · Quadrante orologio'
+    _attr_translation_key = 'clock_face'
     _attr_icon = 'mdi:clock-digital'
 
     def __init__(self, entry, device):
@@ -89,7 +89,7 @@ class ClockFace(_HttpEntity, SelectEntity):
 
     async def async_select_option(self, option):
         if option not in self.options:
-            raise HomeAssistantError('Quadrante non supportato')
+            raise HomeAssistantError('Unsupported clock face')
         http = self.device.get('http')
         if not http: raise HomeAssistantError('HTTP not configured')
         await http.request('PATCH', '/api/v1/settings', {'clockFace': option})
@@ -98,7 +98,7 @@ class ClockFace(_HttpEntity, SelectEntity):
 
 class WeatherOverlay(_HttpEntity, SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = '1 · Animazione meteo sul display'
+    _attr_translation_key = 'weather_overlay'
     _attr_icon = 'mdi:weather-partly-cloudy'
 
     def __init__(self, entry, device):
@@ -127,7 +127,7 @@ class WeatherOverlay(_HttpEntity, SelectEntity):
         return active if active in self.options else 'Nessuno'
 
     async def async_select_option(self, option):
-        if option not in self.options: raise HomeAssistantError('Animazione meteo non supportata')
+        if option not in self.options: raise HomeAssistantError('Unsupported weather overlay')
         http = self.device.get('http')
         if not http: raise HomeAssistantError('HTTP not configured')
         new = None if option == 'Nessuno' else option
@@ -138,7 +138,7 @@ class WeatherOverlay(_HttpEntity, SelectEntity):
 
 class AppTransition(_HttpEntity, SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = '1 · Transizione app'
+    _attr_translation_key = 'app_transition'
     _attr_icon = 'mdi:transition'
 
     def __init__(self, entry, device):
@@ -162,9 +162,9 @@ class AppTransition(_HttpEntity, SelectEntity):
         return value if value in self.options else None
 
     async def async_select_option(self, option):
-        if option not in self.options: raise HomeAssistantError('Transizione non supportata')
+        if option not in self.options: raise HomeAssistantError('Unsupported app transition')
         http = self.device.get('http')
-        if not http: raise HomeAssistantError('HTTP non disponibile')
+        if not http: raise HomeAssistantError('HTTP unavailable')
         await http.request('PATCH', '/api/v1/settings', {'transitionEffect': option})
         http.display_settings['transitionEffect'] = option
         self.async_write_ha_state()

@@ -17,7 +17,8 @@ class IndicatorLight(LightEntity):
     def __init__(self, entry, device, index):
         self.device, self.index = device, index
         self._attr_unique_id = f"{entry.entry_id}_indicator_{index}"
-        self._attr_name = f"5 · Indicatore {index}"
+        self._attr_translation_key = "indicator"
+        self._attr_translation_placeholders = {"index": str(index)}
         self._attr_icon = "mdi:led-on"
         self._attr_device_info = {
             'identifiers': {(DOMAIN, entry.entry_id)},

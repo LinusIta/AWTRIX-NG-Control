@@ -8,6 +8,7 @@ FIELDS = [
     ("1 · Luminosità automatica", "autoBrightness", "mdi:brightness-auto"),
     ("2 · Rotazione automatica app", "autoTransition", "mdi:autorenew"),
 ]
+TRANSLATION_KEYS = {"autoBrightness": "auto_brightness", "autoTransition": "auto_transition"}
 async def async_setup_entry(hass, entry, async_add_entities):
     async_add_entities([SettingSwitch(hass, entry, hass.data[DOMAIN][entry.entry_id], *p) for p in FIELDS])
     from .extra_controls import DisplayPower
@@ -16,7 +17,7 @@ class SettingSwitch(SwitchEntity):
     _attr_has_entity_name = True
     def __init__(self, hass, entry, device, name, key, icon):
         self.hass, self.entry, self.device, self.key = hass, entry, device, key
-        self._attr_name, self._attr_icon = name, icon
+        self._attr_translation_key, self._attr_icon = TRANSLATION_KEYS[key], icon
         self._attr_unique_id = f"{entry.entry_id}_auto_brightness" if key == "autoBrightness" else f"{entry.entry_id}_{key}"
         self._attr_device_info = {"identifiers": {(DOMAIN, entry.entry_id)}, "name": entry.data[CONF_NAME], "manufacturer": "Ulanzi / AWTRIX NG"}
     @property

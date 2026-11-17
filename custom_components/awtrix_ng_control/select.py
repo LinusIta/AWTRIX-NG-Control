@@ -15,7 +15,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
 
 class AwtrixRadioSelect(SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = '4 · Stazione radio'
+    _attr_translation_key = 'radio_station'
     _attr_icon = 'mdi:radio'
     def __init__(self,hass,entry,device):
         self.hass,self.entry,self.device = hass,entry,device
@@ -55,7 +55,7 @@ class AwtrixRadioSelect(SelectEntity):
 
 class AwtrixAppSelect(SelectEntity):
     _attr_has_entity_name = True
-    _attr_name = '2 · Mostra app'
+    _attr_translation_key = 'show_app'
     _attr_icon = 'mdi:apps'
 
     def __init__(self, hass, entry, device):

@@ -11,7 +11,7 @@ class AwtrixBinary(BinarySensorEntity):
     _attr_has_entity_name = True
     def __init__(self, entry, device, key):
         self._device, self._key = device, key
-        self._attr_name = "Online" if key == "availability" else f"Button {key.title()}"
+        self._attr_translation_key = "online" if key == "availability" else f"button_{key}"
         self._attr_unique_id = f"{entry.entry_id}_binary_{key}"
         self._attr_device_info = {"identifiers": {(DOMAIN, entry.entry_id)}, "name": entry.data[CONF_NAME], "manufacturer": "Ulanzi / AWTRIX NG"}
     @property
