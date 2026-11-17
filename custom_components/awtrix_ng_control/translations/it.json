@@ -1024,12 +1024,109 @@
           "name": "ID dispositivo"
         }
       }
+    },
+    "say": {
+      "name": "Sintesi vocale (TTS)",
+      "description": "Genera l'audio tramite un motore TTS di Home Assistant e lo riproduce su AWTRIX NG.",
+      "fields": {
+        "device_id": {
+          "name": "Dispositivo AWTRIX",
+          "description": "Seleziona il dispositivo in Home Assistant."
+        },
+        "device": {
+          "name": "Prefisso MQTT (alternativo)",
+          "description": "Per esempio tc002; lascia vuoto se hai scelto il dispositivo."
+        },
+        "engine": {
+          "name": "Motore TTS"
+        },
+        "message": {
+          "name": "Messaggio"
+        },
+        "language": {
+          "name": "Lingua (opzionale)"
+        },
+        "cache": {
+          "name": "Usa cache TTS"
+        },
+        "options": {
+          "name": "Opzioni motore TTS"
+        }
+      }
     }
   },
   "entity": {
     "notify": {
       "notifications": {
         "name": "Notifiche"
+      }
+    },
+    "select": {
+      "radio_station": {
+        "name": "4 · Stazione radio"
+      },
+      "app_select": {
+        "name": "2 · Mostra app"
+      },
+      "clock_face": {
+        "name": "1 · Quadrante orologio"
+      },
+      "weather_overlay": {
+        "name": "1 · Animazione meteo sul display",
+        "state": {
+          "none": "Nessuno"
+        }
+      },
+      "app_transition": {
+        "name": "1 · Transizione app"
+      },
+      "notification_scroll": {
+        "name": "3 · Scorrimento notifica",
+        "state": {
+          "default": "Predefinito",
+          "static": "Statico",
+          "wrap": "A capo",
+          "loop": "Continuo",
+          "bounce": "Rimbalzo"
+        }
+      }
+    },
+    "switch": {
+      "display_power": {
+        "name": "1 · Schermo acceso"
+      }
+    },
+    "number": {
+      "notification_duration": {
+        "name": "3 · Durata notifica (s)"
+      }
+    },
+    "text": {
+      "notification_sound": {
+        "name": "3 · Suono notifica"
+      }
+    },
+    "sensor": {
+      "active_app": {
+        "name": "App attiva"
+      },
+      "device_info": {
+        "name": "Informazioni dispositivo"
+      },
+      "settings": {
+        "name": "Impostazioni"
+      },
+      "last_error": {
+        "name": "Ultimo errore"
+      },
+      "http_diagnostic": {
+        "name": "Diagnostica HTTP",
+        "state": {
+          "not_configured": "Host HTTP non configurato",
+          "unreachable": "HTTP non raggiungibile",
+          "partial": "HTTP parziale",
+          "connected": "HTTP connesso"
+        }
       }
     }
   },
