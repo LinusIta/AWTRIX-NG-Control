@@ -89,7 +89,7 @@ class ClockFace(_HttpEntity, SelectEntity):
 
     async def async_select_option(self, option):
         if option not in self.options:
-            raise HomeAssistantError('Quadrante non supportato')
+            raise HomeAssistantError('Unsupported clock face')
         http = self.device.get('http')
         if not http: raise HomeAssistantError('HTTP not configured')
         await http.request('PATCH', '/api/v1/settings', {'clockFace': option})
@@ -127,7 +127,7 @@ class WeatherOverlay(_HttpEntity, SelectEntity):
         return active if active in self.options else 'none'
 
     async def async_select_option(self, option):
-        if option not in self.options: raise HomeAssistantError('Animazione meteo non supportata')
+        if option not in self.options: raise HomeAssistantError('Unsupported weather overlay')
         http = self.device.get('http')
         if not http: raise HomeAssistantError('HTTP not configured')
         new = None if option == 'none' else option
@@ -162,9 +162,9 @@ class AppTransition(_HttpEntity, SelectEntity):
         return value if value in self.options else None
 
     async def async_select_option(self, option):
-        if option not in self.options: raise HomeAssistantError('Transizione non supportata')
+        if option not in self.options: raise HomeAssistantError('Unsupported app transition')
         http = self.device.get('http')
-        if not http: raise HomeAssistantError('HTTP non disponibile')
+        if not http: raise HomeAssistantError('HTTP unavailable')
         await http.request('PATCH', '/api/v1/settings', {'transitionEffect': option})
         http.display_settings['transitionEffect'] = option
         self.async_write_ha_state()
